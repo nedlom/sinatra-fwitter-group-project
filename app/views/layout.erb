@@ -4,12 +4,20 @@
     <title>Fwitter</title>
   </head>
   <body>
+    <% if !Helpers.current_user(session) %>
+      <div class="container">
+        <h1>Welcome to Fwitter!</h1>
 
-    <div class="container">
-      <h1>Welcome to Fwitter!</h1>
-      <h2>This is located in layout.erb!</h2>
-      <h2>Don't forget to <strong>yield</strong> your views!</h2>
-    </div>
+        <!-- <h2>This is located in layout.erb!</h2> -->
+        <!-- <h2>Don't forget to <strong>yield</strong> your views!</h2> -->
+      </div>
+    <% else %>
+      <div class="container">
+        <h1>Welcome, <%= Helpers.current_user(session).username %>!</h1>
+      </div>
+    <% end %>
+
+    <%= yield %>
 
   </body>
 </html>

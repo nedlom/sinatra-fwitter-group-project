@@ -177,6 +177,7 @@ describe ApplicationController do
     context 'logged out' do
       it 'does not let a user view the tweets index if not logged in' do
         get '/tweets'
+        # binding.pry
         expect(last_response.location).to include("/login")
       end
     end
@@ -370,6 +371,7 @@ describe ApplicationController do
     context "logged out" do
       it 'does not load -- requests user to login' do
         get '/tweets/1/edit'
+        # binding.pry
         expect(last_response.location).to include("/login")
       end
     end
